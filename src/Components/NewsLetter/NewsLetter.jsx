@@ -1,5 +1,6 @@
 import React from 'react'
 import './NewsLetter.css'
+import { toast } from 'react-toastify';
 
 const NewsLetter = () => {
   return (
@@ -8,7 +9,7 @@ const NewsLetter = () => {
       <p>Subscribe to our newsletter and stay updated.</p>
       <div>
         <input type="email" placeholder='Your email id' />
-        <button>Subscribe</button>
+        <button onClick={() => toast.success("Subscribed Successfully")}>Subscribe</button>
       </div>
     </div>
   )

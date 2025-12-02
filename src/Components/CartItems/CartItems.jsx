@@ -1,12 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./CartItems.css";
 import cross_icon from "../Assets/cart_cross_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 import { backend_url, currency } from "../../config";
+import { toast } from "react-toastify";
 
 const CartItems = () => {
   const { products } = useContext(ShopContext);
   const { cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
+
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+
+  const handlePromoCode = () => {
+    if (promoCode === "SATKART30") {
+      setDiscount(getTotalCartAmount() * 0.3);
+      toast.success("Promo Code Applied");
+    } else {
+      toast.error("Wrong Code");
+    }
+  }
 
   return (
     <div className="cartitems">
@@ -53,7 +66,7 @@ const CartItems = () => {
             <hr />
             <div className="cartitems-total-item">
               <h3>Total</h3>
-              <h3>{currency}{getTotalCartAmount()}</h3>
+              <h3>{currency}{getTotalCartAmount() - discount}</h3>
             </div>
           </div>
           <button>PROCEED TO CHECKOUT</button>
@@ -61,8 +74,8 @@ const CartItems = () => {
         <div className="cartitems-promocode">
           <p>If you have a promo code, Enter it here</p>
           <div className="cartitems-promobox">
-            <input type="text" placeholder="promo code" />
-            <button>Submit</button>
+            <input type="text" placeholder="promo code" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} />
+            <button onClick={handlePromoCode}>Submit</button>
           </div>
         </div>
       </div>

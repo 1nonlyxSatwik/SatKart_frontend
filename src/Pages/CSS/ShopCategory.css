@@ -68,3 +68,38 @@
         font-size: 13px;
     }
 }
+
+.shopcategory-sort {
+  position: relative;
+  cursor: pointer;
+}
+
+.sort-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  z-index: 10;
+  width: 150px;
+}
+
+.shopcategory-sort:hover .sort-dropdown {
+  display: block;
+}
+
+.sort-dropdown p {
+  margin: 5px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sort-dropdown p:hover {
+  color: #ff4141;
+}
+
+.shopcategory-banner {
+  cursor: pointer;
+}

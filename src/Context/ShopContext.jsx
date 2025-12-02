@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { backend_url } from "../config";
+import { toast } from "react-toastify";
 
 export const ShopContext = createContext(null);
 
@@ -65,7 +66,7 @@ const ShopContextProvider = (props) => {
 
   const addToCart = (itemId) => {
     if (!localStorage.getItem("auth-token")) {
-      alert("Please Login");
+      toast.warn("Please Login");
       return;
     }
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

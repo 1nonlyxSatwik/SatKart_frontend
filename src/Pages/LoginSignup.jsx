@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
 import { backend_url } from "../config";
+import { toast } from "react-toastify";
 
 const LoginSignup = () => {
 
@@ -12,7 +13,8 @@ const LoginSignup = () => {
   }
 
   const login = async () => {
-    let dataObj;
+    console.log("Login Function Executed", formData);
+    let responseData;
     await fetch(`${backend_url}/login`, {
       method: 'POST',
       headers: {
@@ -20,21 +22,20 @@ const LoginSignup = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
-    })
-      .then((resp) => resp.json())
-      .then((data) => { dataObj = data });
-    console.log(dataObj);
-    if (dataObj.success) {
-      localStorage.setItem('auth-token', dataObj.token);
+    }).then((response) => response.json()).then((data) => responseData = data)
+
+    if (responseData.success) {
+      localStorage.setItem('auth-token', responseData.token);
       window.location.replace("/");
     }
     else {
-      alert(dataObj.errors)
+      toast.error(responseData.errors);
     }
   }
 
   const signup = async () => {
-    let dataObj;
+    console.log("Signup Function Executed", formData);
+    let responseData;
     await fetch(`${backend_url}/signup`, {
       method: 'POST',
       headers: {
@@ -42,16 +43,14 @@ const LoginSignup = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
-    })
-      .then((resp) => resp.json())
-      .then((data) => { dataObj = data });
+    }).then((response) => response.json()).then((data) => responseData = data)
 
-    if (dataObj.success) {
-      localStorage.setItem('auth-token', dataObj.token);
+    if (responseData.success) {
+      localStorage.setItem('auth-token', responseData.token);
       window.location.replace("/");
     }
     else {
-      alert(dataObj.errors)
+      toast.error(responseData.errors);
     }
   }
 
@@ -67,16 +66,18 @@ const LoginSignup = () => {
 
         <button onClick={() => { state === "Login" ? login() : signup() }}>Continue</button>
 
-        {state === "Login" ?
-          <p className="loginsignup-login">Create an account? <span onClick={() => { setState("Sign Up") }}>Click here</span></p>
-          : <p className="loginsignup-login">Already have an account? <span onClick={() => { setState("Login") }}>Login here</span></p>}
+        {
+          state === "Login" ?
+            <p className="loginsignup-login">Create an account? <span onClick={() => { setState("Sign Up") }}>Click here</span></p>
+            : <p className="loginsignup-login">Already have an account? <span onClick={() => { setState("Login") }}>Login here</span></p>
+        }
 
         <div className="loginsignup-agree">
           <input type="checkbox" name="" id="" />
           <p>By continuing, i agree to the terms of use & privacy policy.</p>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

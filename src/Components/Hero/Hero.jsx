@@ -17,7 +17,7 @@ const Hero = () => {
           <p>collections</p>
           <p>for everyone</p>
         </div>
-        <div className="hero-latest-btn">
+        <div className="hero-latest-btn" onClick={() => window.scrollTo(0, 1800)}>
           <div>Latest Collection</div>
           <img src={arrow_icon} alt="" />
         </div>
