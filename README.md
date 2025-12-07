@@ -128,3 +128,101 @@ If you like the project, give it a ⭐ on GitHub — it helps a lot.
 Satwik Mani Tripathi
 Full-stack Developer & Student
 Building modern web experiences.
+
+
+
+1️ Project Title
+SatKart – E-commerce Backend API
+
+2️ Project Overview
+SatKart is a modern E-commerce Backend System designed to handle all core functionalities of an online shopping platform.
+ It focuses on efficient CRUD operations, API development, and database management with essential features like searching, sorting, filtering, and pagination.
+The goal is to create a robust and scalable backend that can later be integrated with a frontend or mobile app interface.
+
+3️ Objectives
+Develop RESTful APIs for managing products, users, and orders.
+
+
+Implement CRUD operations with secure authentication (JWT).
+
+
+Enable advanced product searching, sorting, and filtering.
+
+
+Add pagination for large product datasets.
+
+
+Integrate a relational database using MySQL.
+
+
+Ensure clean code structure, documentation, and scalability.
+
+
+
+4️ Proposed Tech Stack
+Layer
+Technology
+Backend Framework
+Node.js + Express.js
+Database
+MySQL
+ORM
+Prisma ORM
+Authentication
+JSON Web Token (JWT)
+
+
+
+
+
+
+
+
+Version Control
+Git + GitHub
+
+
+5️ Core Features
+User Management – Register, Login, Update.
+
+
+Product Management – Add, Update, Delete, View Products.
+
+
+Order System – Create orders.
+
+
+Search, Sort, and Filter – Based on price, category, and name.
+
+
+Pagination – Efficiently load large datasets.
+
+
+Authentication & Authorization – Secure API endpoints using JWT.
+
+
+
+6️ Expected Outcomes
+A fully functional backend API for an e-commerce platform.
+
+
+Optimized and secure database operations.
+
+
+Clean, modular, and scalable backend structure ready for frontend integration.
+
+
+
+7️ Future Enhancements
+Payment Gateway Integration (Stripe / Razorpay)
+
+
+Product Reviews & Ratings
+
+
+Product Image Uploads (Cloudinary)
+
+
+
+
+
