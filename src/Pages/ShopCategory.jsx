@@ -13,7 +13,7 @@ const ShopCategory = (props) => {
   const fetchInfo = () => {
     fetch(`${backend_url}/allproducts`)
       .then((res) => res.json())
-      .then((data) => setAllProducts(data))
+      .then((data) => setAllProducts(data.products))
   }
 
   useEffect(() => {

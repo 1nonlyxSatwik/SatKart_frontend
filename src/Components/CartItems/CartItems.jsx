@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CartItems.css";
 import cross_icon from "../Assets/cart_cross_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
@@ -8,6 +9,7 @@ import { toast } from "react-toastify";
 const CartItems = () => {
   const { products } = useContext(ShopContext);
   const { cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
+  const navigate = useNavigate();
 
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
@@ -69,7 +71,7 @@ const CartItems = () => {
               <h3>{currency}{getTotalCartAmount() - discount}</h3>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate('/checkout')}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
           <p>If you have a promo code, Enter it here</p>

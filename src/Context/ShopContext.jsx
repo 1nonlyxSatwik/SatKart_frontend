@@ -21,7 +21,7 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     fetch(`${backend_url}/allproducts`)
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => setProducts(data.products))
 
     if (localStorage.getItem("auth-token")) {
       fetch(`${backend_url}/getcart`, {
@@ -31,7 +31,7 @@ const ShopContextProvider = (props) => {
           'auth-token': `${localStorage.getItem("auth-token")}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(),
+        body: JSON.stringify({}),
       })
         .then((resp) => resp.json())
         .then((data) => { setCartItems(data) });
@@ -44,7 +44,9 @@ const ShopContextProvider = (props) => {
       if (cartItems[item] > 0) {
         try {
           let itemInfo = products.find((product) => product.id === Number(item));
-          totalAmount += cartItems[item] * itemInfo.new_price;
+          if (itemInfo) {
+            totalAmount += cartItems[item] * itemInfo.new_price;
+          }
         } catch (error) { }
       }
     }

@@ -26,10 +26,11 @@ const LoginSignup = () => {
 
     if (responseData.success) {
       localStorage.setItem('auth-token', responseData.token);
+      toast.success("Logged In Successfully");
       window.location.replace("/");
     }
     else {
-      toast.error(responseData.errors);
+      toast.error(responseData.error);
     }
   }
 
@@ -46,11 +47,11 @@ const LoginSignup = () => {
     }).then((response) => response.json()).then((data) => responseData = data)
 
     if (responseData.success) {
-      localStorage.setItem('auth-token', responseData.token);
-      window.location.replace("/");
+      toast.success("Account Created! Please Login");
+      setState("Login");
     }
     else {
-      toast.error(responseData.errors);
+      toast.error(responseData.error);
     }
   }
 
